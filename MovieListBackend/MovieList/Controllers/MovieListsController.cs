@@ -88,6 +88,7 @@ namespace MovieList.Controllers
         [HttpPost]
         public async Task<IActionResult> PostMovieLists([FromBody] MovieLists movieLists)
         {
+            Console.Write(movieLists);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
