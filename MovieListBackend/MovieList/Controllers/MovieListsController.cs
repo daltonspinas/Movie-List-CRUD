@@ -84,7 +84,7 @@ namespace MovieList.Controllers
             return NoContent();
         }
 
-        // PUT: api/MovieLists/5
+        // PUT: api/MovieLists/5/add-movie
         [HttpPut("{id}/add-movie")]
         public async Task<IActionResult> PutMovieListsMovies([FromRoute] int id, [FromBody] Movie movie)
         {
@@ -97,6 +97,50 @@ namespace MovieList.Controllers
 
             var SingleList = await _context.MovieLists.Include(m => m.Movies).FirstOrDefaultAsync(i => i.Id == id);
             SingleList.Movies.Add(movie);
+
+            _context.Entry(SingleList).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MovieListsExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/MovieLists/5/remove-movie
+        [HttpPut("{id}/remove-movie")]
+        public async Task<IActionResult> removeMovieListsMovies([FromRoute] int id, [FromBody] Movie movie)
+        {
+            // Make sure we are capturing the id from the URL once we make the API calls on the frontend
+            if (!ModelState.IsValid)
+            {
+
+                return BadRequest(ModelState);
+            }
+
+            var SingleList = await _context.MovieLists.Include(m => m.Movies).FirstOrDefaultAsync(i => i.Id == id);
+            var movieToRemove = new Movie { };
+
+            foreach (var movieObject in SingleList.Movies)
+            {
+                if(movieObject.Id == movie.Id)
+                {
+                    movieToRemove = movieObject;
+                }
+            }
+                    SingleList.Movies.Remove(movieToRemove);
 
             _context.Entry(SingleList).State = EntityState.Modified;
 
@@ -158,6 +202,9 @@ namespace MovieList.Controllers
 
             return Ok(movieLists);
         }
+
+
+        
 
         private bool MovieListsExists(int id)
         {
