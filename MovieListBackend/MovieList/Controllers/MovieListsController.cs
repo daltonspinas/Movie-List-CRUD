@@ -84,6 +84,41 @@ namespace MovieList.Controllers
             return NoContent();
         }
 
+        // PUT: api/MovieLists/5
+        [HttpPut("{id}/add-movie")]
+        public async Task<IActionResult> PutMovieListsMovies([FromRoute] int id, [FromBody] Movie movie)
+        {
+            // Make sure we are capturing the id from the URL once we make the API calls on the frontend
+            if (!ModelState.IsValid)
+            {
+
+                return BadRequest(ModelState);
+            }
+
+            var SingleList = await _context.MovieLists.Include(m => m.Movies).FirstOrDefaultAsync(i => i.Id == id);
+            SingleList.Movies.Add(movie);
+
+            _context.Entry(SingleList).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MovieListsExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // POST: api/MovieLists
         [HttpPost]
         public async Task<IActionResult> PostMovieLists([FromBody] MovieLists movieLists)
