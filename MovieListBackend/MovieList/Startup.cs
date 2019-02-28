@@ -35,8 +35,12 @@ namespace MovieList
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddDbContext<MovieContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MovieContext")));
+
             services.AddDbContext<MovieListContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MovieListContext")));
+
 
             services.AddCors(options =>
             {
@@ -46,6 +50,7 @@ namespace MovieList
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
