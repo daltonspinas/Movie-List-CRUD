@@ -1,0 +1,11 @@
+<div *ngIf="!movieLists">Lists Loading</div>
+
+<div class="flex">
+  <div *ngFor="let MovieList of movieLists" class="card">
+    <h3 class="card-header">{{MovieList.name}}</h3>
+    <div class="card-body">
+      <h5 class="card-title">Movies: {{MovieList.movies.length}}</h5>
+      <button (click)="sendTo('/one-list/' + MovieList.id)" class="btn btn-primary">View List</button>
+    </div>
+  </div>
+</div>

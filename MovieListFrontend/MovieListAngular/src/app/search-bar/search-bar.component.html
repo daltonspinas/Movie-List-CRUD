@@ -1,0 +1,16 @@
+<div>
+  <form autocomplete="off" >
+    <div class="input-group">
+        <input list="movies" type="text" class="form-control" defualt="Search by Title" (ngModelChange)="setString($event)"
+               required
+               [(ngModel)]="searchString" name="Movie Name">
+        <datalist id="movies">
+        <option *ngFor="let movie of movies">{{movie.title}}</option>
+      </datalist>
+      <span >
+        <button class="btn btn-warning" type="button" value="search" (click)="goToMovie()">Search</button>
+      </span>
+      </div>
+      </form>
+</div>
+

@@ -1,0 +1,10 @@
+<div class="flex">
+  <div *ngFor="let movie of movies.results" class="card" style="width: 18rem;">
+    <img class="card-img-top" [src]="'https://image.tmdb.org/t/p/original/' + movie.poster_path" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{movie.title}}</h5>
+      <p class="card-text">{{movie.overview}}</p>
+      <button (click)="sendTo(movie.id)" class="btn btn-primary">View Movie</button>
+    </div>
+  </div>
+</div>

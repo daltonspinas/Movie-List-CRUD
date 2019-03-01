@@ -1,0 +1,14 @@
+<div>
+  <div *ngIf="movie" class="card">
+    <img class="card-img-top" src="{{movie.poster_path}}" alt="Card image cap" width="200" height="200">
+    <h1 class="card-title">{{movie.title}}</h1>
+    <div id="my-form">
+      <select id="select-list">
+        <option *ngFor="let list of movieLists" [value]="list.id">{{list.name}}</option>
+      </select>
+      <button (click)="addMovie(movie)" class="btn btn-primary">add to list</button>
+    </div>
+    <p class="card-text">{{movie.overview}}</p>
+  </div>
+</div>
+

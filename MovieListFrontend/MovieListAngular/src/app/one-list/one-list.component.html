@@ -1,0 +1,28 @@
+
+
+
+<div *ngIf="singleList">
+  <h1>{{singleList.name}}</h1>
+  <button id="delete-button" class="btn btn-danger" (click)="deleteList()">Delete List</button>
+  <div>
+    <form class="input-group">
+      <input type="text" class="form-control" (ngModelChange)="setName($event)"
+             required
+             [(ngModel)]="newListName" name="New Name For List">
+      <span class="input-group-btn">
+        <button (click)="renameList(newListName)" class="btn btn-secondary" type="submit" value="search">Change List Name</button>
+      </span>
+    </form>
+  </div>
+
+  <div class="flex">
+    <div *ngFor="let movie of singleList.movies" class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{movie.title}}</h5>
+        <img class="card-img-top" [src]="movie.poster" alt="Card image cap">
+        <p class="card-text">{{movie.plot}}</p>
+        <button class="btn btn-danger" (click)="deleteMovie(movie)">Remove From List</button>
+      </div>
+    </div>
+  </div>
+</div>

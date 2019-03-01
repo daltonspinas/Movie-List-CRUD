@@ -1,0 +1,17 @@
+<!--<form>
+  <input  type="text" class="form-control" id="name" (ngModelChange)="setListName($event)"
+         required
+         [(ngModel)]="listName" name="List Name">
+  <button type="button" (click)="createList()">Create List</button>
+           
+</form>-->
+
+
+<form class="input-group">
+  <input type="text" class="form-control" (ngModelChange)="setListName($event)"
+         required
+         [(ngModel)]="listName" name="List Name">
+  <span class="input-group-btn">
+    <button (click)="createList()" class="btn btn-secondary" type="submit" value="search">Create List</button>
+  </span>
+</form>

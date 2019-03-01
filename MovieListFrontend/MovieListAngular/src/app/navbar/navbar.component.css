@@ -1,0 +1,20 @@
+.nav-link {
+  cursor: pointer;
+}
+
+#nav-div {
+  width: inherit;
+}
+
+#nav-ul {
+  width: 100%;
+}
+
+.nav-item {
+  display: block;
+}
+
+#search-bar {
+  position: absolute;
+  right: 0;
+}

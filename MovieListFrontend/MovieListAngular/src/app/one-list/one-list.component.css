@@ -1,0 +1,32 @@
+.flex {
+  flex-wrap:wrap;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.flex * {
+  flex-flow: 1;
+}
+
+.flex button {
+  position: absolute;
+  bottom: 0;
+}
+
+form {
+  width: 40%;
+  margin: 0 auto;
+}
+
+h1 {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#delete-button {
+  width: 20%;
+  display:block;
+  margin: 0 auto;
+}

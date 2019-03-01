@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+
+  <!--<button class="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>-->
+
+
+  <div id="nav-div">
+    <ul class="navbar-nav mr-auto" id="nav-ul">
+      <li class="nav-item" (click)="sendTo('/')">
+        <a class="nav-link">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" (click)="sendTo('/list-view')">My Lists</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="sendTo('/add-list-form')">Create List</a>
+      </li>
+        <app-search-bar id="search-bar"></app-search-bar>
+    </ul>
+  </div>
+</nav>

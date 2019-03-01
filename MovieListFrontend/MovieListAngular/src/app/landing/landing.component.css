@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.flex img {
+  height: 50%;
+}
+
+.flex p {
+  font-size: smaller;
+}
+
+.btn {
+  position: absolute;
+  bottom: 0;
+  right: auto;
+  left: auto;
+  margin: 0 auto;
+}
